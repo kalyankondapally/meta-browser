@@ -17,7 +17,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=537e0b52077bf0a616d0a0c8a79bc9d5"
 DESCRIPTION = "Chromium browser"
 LICENSE = "BSD"
 DEPENDS = "xz-native pciutils pulseaudio cairo nss zlib-native libav cups ninja-native gconf libexif pango libdrm"
-RDEPENDS_chromium += "alsa-utils libegl-mesa libglapi libgles1-mesa libgles2-mesa mesa-megadriver libva libgbm libva-wayland"
+RDEPENDS_chromium += "alsa-utils libegl-mesa libglapi libgles1-mesa libgles2-mesa mesa-megadriver libva libgbm libva-wayland libva-intel-driver libexif"
 SRC_URI = "\
         file://include.gypi \
         file://oe-defaults.gypi \
@@ -127,7 +127,7 @@ S = "${CHROMIUM_LOCAL_PATH}"
 # These are present as their own variables, since they have changed between versions
 # a few times in the past already; making them variables makes it easier to handle that
 CHROMIUM_WAYLAND_DEPENDS = "wayland libxkbcommon"
-CHROMIUM_WAYLAND_GYP_DEFINES = "use_ash=1 use_aura=1 chromeos=0 use_ozone=1 use_xkbcommon=1 ffmpeg_branding='Chrome' "
+CHROMIUM_WAYLAND_GYP_DEFINES = "use_ash=1 use_aura=1 chromeos=0 use_ozone=1 use_xkbcommon=1 "
 
 python() {
     if d.getVar('ENABLE_WAYLAND', True) == '1':
